@@ -1,5 +1,14 @@
 defmodule Myeg.Services do
   alias Myeg.Services.Bureau
+  alias Myeg.{Accounts, Repo}
+  @behaviour Bodyguard.Policy
+
+  @doc """
+  Admin can do anything.
+  Users cant
+  """
+  def authorize(_, %Accounts.User{role: role}, _) when role != :user, do: true
+  def authorize(_, %Accounts.User{role: role}, _) when role == :user, do: false
 
   @doc """
   Return a bureau  

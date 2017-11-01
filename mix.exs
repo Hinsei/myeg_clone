@@ -42,6 +42,7 @@ defmodule Myeg.Mixfile do
       {:gettext, "~> 0.11"},
       {:comeonin, "~> 4.0"},
       {:argon2_elixir, "~>1.2"},
+      {:bodyguard, "~> 2.1"},
       {:cowboy, "~> 1.0"}
     ]
   end
