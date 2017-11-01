@@ -1,0 +1,31 @@
+<ul class="carousel my-carousel">
+    <input class="carousel__activator" type="radio" id="1" name="activator" checked="checked"/>
+    <input class="carousel__activator" type="radio" id="2" name="activator"/>
+    <input class="carousel__activator" type="radio" id="3" name="activator"/>
+    <div class="carousel__controls">
+      <label class="carousel__control carousel__control--backward" for="2"></label>
+      <label class="carousel__control carousel__control--forward" for="3"></label>
+    </div>
+    <div class="carousel__controls">
+      <label class="carousel__control carousel__control--backward" for="3"></label>
+      <label class="carousel__control carousel__control--forward" for="1"></label>
+    </div>
+    <div class="carousel__controls">
+      <label class="carousel__control carousel__control--backward" for="1"></label>
+      <label class="carousel__control carousel__control--forward" for="2"></label>
+    </div>
+    <li class="carousel__slide">
+      <img src="https://www.myeg.com.my/images/myeg_slider/Slider-PATI-REHIRING-2-en.jpg" />
+    </li>
+    <li class="carousel__slide">
+      <img src="https://www.myeg.com.my/images/myeg_slider/MyEG-HLA-Web-banner-940x265-op4-en.jpg" />
+    </li>
+    <li class="carousel__slide">
+      <img src="https://www.myeg.com.my/images/myeg_slider/Zakat-Web-Banner-en.jpg" />
+    </li>
+    <div class="carousel__indicators">
+      <label class="carousel__indicator" for="1"></label>
+      <label class="carousel__indicator" for="2"></label>
+      <label class="carousel__indicator" for="3"></label>
+    </div>
+</ul>

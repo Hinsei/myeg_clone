@@ -1,0 +1,26 @@
+<div id="container">
+  <div id="main">
+    <%= render(MyegWeb.SharedView,  "carousel.html") %> 
+  </div>
+  <div id="auth">
+    <%= case current_user(@conn) do %>
+      <% nil -> %>
+        <%= render(MyegWeb.SessionView, "login.html", conn: @conn) %>
+      <% _ -> %>
+        <p>Logged_In</p>
+        <%= link("SignOut", to: "/sessions", method: :delete) %>
+    <% end %>
+  </div>
+  <div id="info">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Kuala Lumpur City Hall</li>
+      <li>Road Transport Department</li>
+      <li>Immigration Department of Malaysia</li>
+      <li>Royal Malaysia Police</li>
+      <li>National Registration Department</li>
+      <li>Zakat</li>
+      <li>Malaysia Department of Insolvency</li>
+    </ul>
+  </div>
+</div

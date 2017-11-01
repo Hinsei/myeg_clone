@@ -1,0 +1,15 @@
+#info h2{
+  border: black 2px solid;
+  text-align: center;
+}
+
+#info ul{
+  list-style: none;
+  padding: 0;
+}
+
+#info li {
+  text-align: center;
+  border: black 2px solid;
+  margin: 2px;
+}

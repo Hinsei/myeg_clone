@@ -1,0 +1,12 @@
+<%= form_for @conn, session_path(@conn, :create), [as: :session], fn f -> %>
+  <div>
+    <%= email_input f, :email, placeholder: "Email" %>
+  </div>
+  <div>
+    <%= password_input f, :password, placeholder: "Password" %>
+  </div>
+  <div>
+    <%= submit "Log In" %>
+  </div>
+<% end %>
+<%= link("Register", to: user_path(@conn, :new)) %>
