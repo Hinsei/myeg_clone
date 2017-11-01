@@ -23,6 +23,13 @@ defmodule MyegWeb.Router do
     delete "/sessions", SessionController,  :delete
   end
 
+  scope"/admin", MyegWeb.Admin, as: :admin do
+    pipe_through :browser
+
+    get "/bureaus/new", BureauController, :new
+    post "/bureaus", BureauController, :create
+  end
+
   # Other scopes may use custom stacks.
   #  scope "/api", MyegWeb.API do
   #    pipe_through :api
