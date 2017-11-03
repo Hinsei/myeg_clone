@@ -1,0 +1,17 @@
+<div id="bureau">
+  <div>
+    <p><%= @bureau.name %></p>
+  </div>
+  <div>
+    <p><%= @bureau.email%></p>
+  </div>
+  <div>
+    <p><%= @bureau.mobile %></p>
+  </div>
+  <div>
+    <p><%= @bureau.location%></p>
+  </div>
+  <div>
+    <img src="<%= @bureau.logo %>" />
+  </div>
+</div>

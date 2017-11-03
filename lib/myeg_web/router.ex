@@ -17,22 +17,30 @@ defmodule MyegWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/",            PageController,     :index
+
     get "/users/new",   UserController,     :new
     post "/users",      UserController,     :create
+
     post "/sessions",   SessionController,  :create
     delete "/sessions", SessionController,  :delete
+
+    get "/specialties/new", SpecialtyController,  :new
+    post "/specialties",     SpecialtyController,  :create
   end
 
   scope"/admin", MyegWeb.Admin, as: :admin do
     pipe_through :browser
 
     get "/bureaus/new", BureauController, :new
-    post "/bureaus", BureauController, :create
+    get "/bureaus/:id", BureauController, :show
+    post "/bureaus",    BureauController, :create
   end
 
   # Other scopes may use custom stacks.
-  #  scope "/api", MyegWeb.API do
-  #    pipe_through :api
-  #
-  #  end
+  scope "/api", MyegWeb.API do
+    pipe_through :api
+
+    get "/bureaus/:id", BureauController, :show
+
+  end
 end

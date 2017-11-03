@@ -14,7 +14,10 @@ defmodule Myeg.Services do
   Return a bureau  
   """
   def get_bureau(id) do
-    Repo.get(Bureau, id)
+    case Repo.get(Bureau, id) do
+      nil     -> {:error, :not_found}
+      bureau  -> {:ok, bureau}
+    end
   end
 
   @doc """

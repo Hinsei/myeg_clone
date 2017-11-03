@@ -3,13 +3,13 @@ defmodule MyegWeb.Admin.BureauController do
   use MyegWeb, :controller
 
   def new(conn, _params) do
-    %{assigns: %{current_user: user}} = conn
+    user = get_session(conn, :current_user)
     with :ok <- Bodyguard.permit(Services, :create_bureau, user, Services),
     do: render(conn, "new.html", changeset: Services.bureau_changes())
   end
 
   def create(conn, %{"bureau" => bureau_info}) do
-    %{assigns: %{current_user: user}} = conn
+    user = get_session(conn, :current_user)
     with :ok          <- Bodyguard.permit(Services, :create_bureau, user, Services),
          {:ok, bureau} <- Services.create_bureau(bureau_info)
     do    
@@ -27,5 +27,10 @@ defmodule MyegWeb.Admin.BureauController do
         |> put_flash(:error, "Bureau failed to be saved")
         |> render("new.html", changeset: changeset)
     end
+  end
+
+  def show(conn, %{"id" => id}) do
+    with {:ok, bureau} <- Myeg.Services.get_bureau(id),
+    do:  render(conn, "show.html", bureau: bureau)
   end
 end

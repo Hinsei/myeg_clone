@@ -1,10 +1,5 @@
 <%= form_for @changeset, admin_bureau_path(@conn, :create), fn f -> %>
   <div class="form-group">
-    <%= label f, "" %>
-    <%= text_input f, "", class: "form-control" %>
-  </div>
-
-  <div class="form-group">
     <%= label f, "name" %>
     <%= text_input f, :name, class: "form-control" %>
   </div>
@@ -29,5 +24,5 @@
     <%= text_input f, :mobile, class: "form-control" %>
   </div>
 
-  <% submit "Save" %>
+  <%= submit "Save" %>
 <% end %>
