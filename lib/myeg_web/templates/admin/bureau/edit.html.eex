@@ -1,0 +1,3 @@
+<%= form_for @changeset, admin_bureau_path(@conn, :update, @bureau),  fn f -> %>
+
+<% end %>

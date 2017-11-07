@@ -13,3 +13,13 @@
   border: black 2px solid;
   margin: 2px;
 }
+
+#info li a {
+  text-decoration: none;
+  font-size: 2em;
+  color: black;
+}
+
+#info li a:hover {
+  background-color: blue;
+}

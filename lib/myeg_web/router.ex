@@ -21,6 +21,8 @@ defmodule MyegWeb.Router do
     get "/users/new",   UserController,     :new
     post "/users",      UserController,     :create
 
+    get "/bureaus/:id", BureauController, :show
+
     post "/sessions",   SessionController,  :create
     delete "/sessions", SessionController,  :delete
 
@@ -31,9 +33,7 @@ defmodule MyegWeb.Router do
   scope"/admin", MyegWeb.Admin, as: :admin do
     pipe_through :browser
 
-    get "/bureaus/new", BureauController, :new
-    get "/bureaus/:id", BureauController, :show
-    post "/bureaus",    BureauController, :create
+    resources "/bureaus", BureauController
   end
 
   # Other scopes may use custom stacks.

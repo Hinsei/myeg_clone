@@ -21,6 +21,13 @@ defmodule Myeg.Services do
   end
 
   @doc """
+  Return list of bureaus
+  """
+  def list_bureaus() do
+    Repo.all(Bureau)
+  end
+
+  @doc """
   Creates a bureau
   """
   def create_bureau(attrs) do

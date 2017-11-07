@@ -9,6 +9,8 @@ defmodule Myeg.Repo.Migrations.CreateBeureau do
       add :logo, :string
       add :mobile, :string
     end
+    
+    create unique_index(:bureaus, [:name])
   end
 
   def down do

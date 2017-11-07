@@ -29,8 +29,17 @@ defmodule MyegWeb.Admin.BureauController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+    user = get_session(conn, :current_user)
+    with :ok            <- Bodyguard.permit(Services, :edit_bureau, user, Services),
+         {:ok, bureau}  <- Services.get_bureau(id),
+    do:  render(conn, "edit.html",bureau: bureau, changeset: Services.bureau_changes(bureau, %{}))
+  end
+
   def show(conn, %{"id" => id}) do
-    with {:ok, bureau} <- Myeg.Services.get_bureau(id),
+    user = get_session(conn, :current_user)
+    with :ok           <- Bodyguard.permit(Services, :show_bureau, user, Services),
+         {:ok, bureau} <- Services.get_bureau(id),
     do:  render(conn, "show.html", bureau: bureau)
   end
 end
