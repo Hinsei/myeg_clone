@@ -4,7 +4,7 @@ defmodule Myeg.Services.Specialty do
 
   schema "specialties" do
     field :title, :string
-    field :form_data, {:array, :map}, default: []
+    field :form_data, {:array, :string}, default: []
     field :type, Myeg.Enum.TypeOfService
     belongs_to :bureau, Myeg.Services.Bureau
 
