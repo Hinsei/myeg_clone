@@ -1,16 +1,19 @@
-<%= form_for @changeset, admin_bureau_specialty_path(@conn, :create, @bureau), fn f -> %>
-  <div class="form-group">
-    <%= label f, "title" %>
-    <%= text_input f, :title, class: "form-control" %>
-  </div>
+<div id="new-specialty-form">
+  <%= form_for @changeset, admin_bureau_specialty_path(@conn, :create, @bureau), fn f -> %>
+    <div class="form-group">
+      <%= label f, "title" %>
+      <%= text_input f, :title, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= label f, "form_data" %>
-    <%= text_input f, :form_data, class: "form-control" %>
-  </div>
+    <div id="form-data-container" class="form-group">
+      <%= label f, "form_data" %>
+      <%= text_input f, :form_data, class: "form-control" %>
+    </div>
+    <button id="add-form-data-field">Add field</button>
 
-  <div class="form-group">
-    <%= label f, :type %>
-    <%= radio_button f, :type, "summons_checking" %> Summons Checking
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= label f, :type %>
+      <%= radio_button f, :type, "summons_checking" %> Summons Checking
+    </div>
+  <% end %>
+</div>
