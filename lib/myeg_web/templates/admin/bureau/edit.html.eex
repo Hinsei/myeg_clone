@@ -1,3 +1,41 @@
 <%= form_for @changeset, admin_bureau_path(@conn, :update, @bureau),  fn f -> %>
+  <div class="form-group">
+    <%= label f, "name" %>
+    <%= text_input f, :name, class: "form-control" %>
+  </div>
 
+  <div class="form-group">
+    <%= label f, "email" %>
+    <%= email_input f, :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, "location" %>
+    <%= text_input f, :location, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, "logo" %>
+    <%= text_input f, :logo, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, "mobile" %>
+    <%= text_input f, :mobile, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= case @bureau.specialties do %>
+      <% [] -> %> 
+        <%= link "Add specialty", to: admin_bureau_specialty_path(@conn, :new, @bureau)  %>        
+      <% _ -> %>
+        <%= label f, "type_of_specialty" %>
+        <%= for special <- @bureau.type_of_specialties do %>
+          <%= radio_button f, :type_of_specialties, "summons_checking" %>
+        <% end %>
+        <p>Click To Add More</p>
+    <% end %>
+  </div>
+
+  <%= submit "Update" %>
 <% end %>

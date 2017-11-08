@@ -26,14 +26,14 @@ defmodule MyegWeb.Router do
     post "/sessions",   SessionController,  :create
     delete "/sessions", SessionController,  :delete
 
-    get "/specialties/new", SpecialtyController,  :new
-    post "/specialties",     SpecialtyController,  :create
   end
 
   scope"/admin", MyegWeb.Admin, as: :admin do
     pipe_through :browser
 
-    resources "/bureaus", BureauController
+    resources "/bureaus", BureauController do
+      resources "/specialties", SpecialtyController, only: [:new, :create]
+    end
   end
 
   # Other scopes may use custom stacks.

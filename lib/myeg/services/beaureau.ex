@@ -18,6 +18,7 @@ defmodule Myeg.Services.Bureau do
     field :location, :string
     field :logo, :string
     field :mobile, :string
+    field :type_of_specialties, {:array, :integer}, default: []
     has_many :specialties, Myeg.Services.Specialty
   end
 

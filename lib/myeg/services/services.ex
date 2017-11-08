@@ -1,5 +1,5 @@
 defmodule Myeg.Services do
-  alias Myeg.Services.Bureau
+  alias Myeg.Services.{Bureau, Specialty}
   alias Myeg.{Accounts, Repo}
   @behaviour Bodyguard.Policy
 
@@ -16,7 +16,11 @@ defmodule Myeg.Services do
   def get_bureau(id) do
     case Repo.get(Bureau, id) do
       nil     -> {:error, :not_found}
-      bureau  -> {:ok, bureau}
+      bureau  -> 
+        bureau = 
+          bureau
+          |> Repo.preload(:specialties)
+        {:ok, bureau}
     end
   end
 
@@ -42,5 +46,13 @@ defmodule Myeg.Services do
   def bureau_changes(bureau \\ %Bureau{}, attrs\\ %{}) do
     Bureau.changeset(bureau, attrs)
   end
+
+  @doc """
+  Return changeset of specialty to look at changes
+  """
+  def specialty_changes(specialty \\ %Specialty{}, attrs \\ %{}) do
+    Specialty.changeset(specialty, attrs)
+  end
 end
+
 

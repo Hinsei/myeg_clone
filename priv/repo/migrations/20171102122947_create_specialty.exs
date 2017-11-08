@@ -2,7 +2,7 @@ defmodule Myeg.Repo.Migrations.CreateSpecialty do
   use Ecto.Migration
 
   def up do
-    create table(:specialty) do
+    create table(:specialties) do
       add :title, :string
       add :form_data, {:array, :map}, default: []
       add :bureau_id, references(:bureaus)
@@ -12,6 +12,6 @@ defmodule Myeg.Repo.Migrations.CreateSpecialty do
   end
 
   def down do
-    drop table(:specialty)
+    drop table(:specialties)
   end
 end
