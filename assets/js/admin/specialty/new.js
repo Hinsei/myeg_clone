@@ -6,7 +6,7 @@ addFormData.addEventListener("click", function(e){
   const numberOfField = containerFormData.childElementCount
   const newField = document.createElement("input")
   newField.setAttribute("type", "text")
-  newField.setAttribute("name", "specialty[form-data]")
+  newField.setAttribute("name", "specialty[form_data_" + numberOfField + "]")
   newField.setAttribute("id", "form-field-" + numberOfField)
   containerFormData.append(newField)
 })

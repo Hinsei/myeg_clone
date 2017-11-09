@@ -41,6 +41,15 @@ defmodule Myeg.Services do
   end
 
   @doc """
+  Creates a specialty
+  """
+  def create_specialty(attrs) do
+    %Specialty{}
+    |> Specialty.changeset(attrs)    
+    |> Repo.insert()
+  end
+
+  @doc """
   Return changeset of bureau to look at changes
   """
   def bureau_changes(bureau \\ %Bureau{}, attrs\\ %{}) do
@@ -52,6 +61,39 @@ defmodule Myeg.Services do
   """
   def specialty_changes(specialty \\ %Specialty{}, attrs \\ %{}) do
     Specialty.changeset(specialty, attrs)
+  end
+
+  @doc """
+  Used in admin specialty_controller to format params from client to create a valid changeset
+  """
+  @spec format_specialty_params(map) :: map
+  def format_specialty_params(%{"bureau_id" => bureau_id, "specialty" => specialty}) do
+    specialty
+    |> Enum.map(fn {k, v} ->
+          new_value = Regex.replace(~r/\s+/, v, "_")
+          {k, new_value}
+       end)
+    |> Enum.into(%{})
+    |> Map.put("bureau_id", bureau_id)
+    |> Enum.reduce(%{}, fn {x, y}, acc ->
+      case Regex.match?(~r/form_data/, x) do
+        true ->
+          acc = 
+            case Map.get(acc, "form_data") do
+              nil -> Map.put(acc, "form_data", [])
+              _ -> acc
+            end
+          old_list = Map.get(acc, "form_data")
+          new_list =
+            case y do
+              ""  -> old_list
+              _   -> old_list ++ [y]
+            end
+          Map.put(acc, "form_data", new_list)
+        false ->
+          Map.put(acc, x, y)
+      end
+    end)
   end
 end
 

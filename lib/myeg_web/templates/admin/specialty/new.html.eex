@@ -11,9 +11,9 @@
     </div>
     <button id="add-form-data-field">Add field</button>
 
-    <div class="form-group">
-      <%= label f, :type %>
-      <%= radio_button f, :type, "summons_checking" %> Summons Checking
+    <div>
+      <%= submit "Add Specialty" %>
     </div>
+
   <% end %>
 </div>
