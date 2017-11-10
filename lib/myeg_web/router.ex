@@ -26,6 +26,9 @@ defmodule MyegWeb.Router do
     post "/sessions",   SessionController,  :create
     delete "/sessions", SessionController,  :delete
 
+    get "/specialties/:specialty_id/submissions/new", SubmissionController, :new
+    get "/specialties/:specialty_id/submissions/:id", SubmissionController, :show
+    post "/specialties/:specialty_id/submissions",    SubmissionController, :create
   end
 
   scope"/admin", MyegWeb.Admin, as: :admin do

@@ -1,6 +1,6 @@
 defmodule Myeg.Accounts do
   alias Myeg.Repo 
-  alias Myeg.Accounts.User
+  alias Myeg.Accounts.{User, Submission}
 
   @doc """
   Return a user
@@ -19,6 +19,18 @@ defmodule Myeg.Accounts do
   end
 
   @doc """
+  Return a submission
+  """
+  def get_submission(id) do
+    Submission
+    |> Repo.get(id)
+    |> case do
+        nil         -> {:error, :not_found}
+        submission  -> {:ok, submission}
+       end
+  end
+
+  @doc """
   Return list of users
   """
   def list_users() do
@@ -33,6 +45,21 @@ defmodule Myeg.Accounts do
     %User{}
     |> User.create_changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  Create a submission
+  """
+  def create_submission(user, %{"specialty_id" => specialty_id, "submission" => form_input}) do
+    changes =
+      %{}
+      |> Map.put("specialty_id", specialty_id)
+      |> Map.put("user_id", user.id)
+      |> Map.put("form_input", form_input)
+
+    %Submission{}
+    |> Submission.changeset(changes)
+    |> Repo.insert
   end
 
   @doc """
@@ -57,5 +84,13 @@ defmodule Myeg.Accounts do
   def changes_user(user \\ %User{}) do
     user
     |> User.create_changeset(%{})
+  end
+
+  @doc """
+  Return ecto changeset for submission
+  """
+  def changes_submission(submission \\ %Submission{}) do
+    submission
+    |> Submission.changeset(%{})
   end
 end

@@ -23,6 +23,7 @@ defmodule MyegWeb do
       import Plug.Conn
       import MyegWeb.Router.Helpers
       import MyegWeb.Gettext
+      import MyegWeb.ControllerHelpers
     end
   end
 

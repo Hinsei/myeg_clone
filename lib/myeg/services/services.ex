@@ -25,6 +25,16 @@ defmodule Myeg.Services do
   end
 
   @doc """
+  Return a specialty
+  """
+  def get_specialty(id) do
+    case Repo.get(Specialty, id) do
+      nil -> {:error, :not_found}
+      specialty -> {:ok, format_specialty_title(specialty)}
+    end
+  end
+
+  @doc """
   Return list of bureaus
   """
   def list_bureaus() do
@@ -94,6 +104,20 @@ defmodule Myeg.Services do
           Map.put(acc, x, y)
       end
     end)
+  end
+
+  @doc """
+  Used whenever a specialty is retrieved from the database
+  """
+  @spec format_specialty_title(map) :: map
+  def format_specialty_title(struct = %{title: title}) do
+    new_title = 
+      Regex.replace(~r/_+/, title, " ")
+      |> String.split()
+      |> Enum.map(&String.capitalize/1)
+      |> Enum.join(" ")
+
+    Map.put(struct, :title, new_title)
   end
 end
 

@@ -1,0 +1,13 @@
+<p>Submission goes here</p>
+<p><%= @specialty.title %></p>
+
+<%= form_for @changeset, submission_path(@conn, :create, @specialty), fn f -> %>
+  <%= for form_data <- @specialty.form_data do %>
+    <div class="form-group">
+      <%= label f, form_data %>
+      <%= text_input f, String.to_atom(form_data), class: "form-control" %>
+    </div>
+  <% end %>
+
+  <%= submit "Submit Form" %>
+<% end %>
