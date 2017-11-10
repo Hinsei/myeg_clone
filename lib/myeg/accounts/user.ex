@@ -14,6 +14,8 @@ defmodule Myeg.Accounts.User do
     field :password_hash, :string
     field :role, Myeg.Enum.Role, default: :user
 
+    has_many :submissions, Myeg.Accounts.Submission
+
     timestamps()
   end
 
