@@ -5,6 +5,7 @@ defmodule Myeg.Services.Specialty do
   schema "specialties" do
     field :title, :string
     field :form_data, {:array, :string}, default: []
+    field :payable, :boolean, default: false
     belongs_to :bureau, Myeg.Services.Bureau
 
     timestamps()
