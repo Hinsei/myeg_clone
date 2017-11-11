@@ -17,7 +17,7 @@ defmodule MyegWeb.Admin.SpecialtyController do
 
         conn
         |> put_flash(:info, "Success")
-        |> render(MyegWeb.Admin.BureauView, :show, bureau: Myeg.Services.get_bureau(specialty.id))
+        |> render(MyegWeb.Admin.BureauView, :show, bureau: Myeg.Services.get_bureau(specialty.bureau_id))
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Error")

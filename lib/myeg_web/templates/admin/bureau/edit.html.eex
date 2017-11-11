@@ -27,13 +27,14 @@
   <div class="form-group">
     <%= case @bureau.specialties do %>
       <% [] -> %> 
-        <%= link "Add specialty", to: admin_bureau_specialty_path(@conn, :new, @bureau)  %>        
+        <%= link "Add Specialty", to: admin_bureau_specialty_path(@conn, :new, @bureau)  %>        
       <% _ -> %>
-        <%= label f, "type_of_specialty" %>
-        <%= for special <- @bureau.type_of_specialties do %>
-          <%= radio_button f, :type_of_specialties, "summons_checking" %>
+        <ol>
+        <%= for specialty <- @bureau.specialties do %>
+          <li><%= Myeg.Services.format_specialty_title(specialty).title %></li> 
         <% end %>
-        <p>Click To Add More</p>
+        </ol>
+        <%= link "Add More", to: admin_bureau_specialty_path(@conn, :new, @bureau) %>
     <% end %>
   </div>
 

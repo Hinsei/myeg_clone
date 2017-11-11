@@ -11,6 +11,12 @@
     </div>
     <button id="add-form-data-field">Add field</button>
 
+    <div class="form-group">
+      <%= label f, "Requires Payment" %>
+      True <%= radio_button f, :payable, true %>
+      False<%= radio_button f, :payable, false %>
+    </div>
+
     <div>
       <%= submit "Add Specialty" %>
     </div>
