@@ -50,5 +50,5 @@ Repo.insert!(Specialty.changeset(%Specialty{}, %{title: "accident_document_purch
 Repo.insert!(Specialty.changeset(%Specialty{}, %{title: "check_balance", form_data: ["id_number", "name", "email", "mobile"], bureau_id: ptptn.id}))
 Repo.insert!(Specialty.changeset(%Specialty{}, %{title: "make_payment", form_data: ["service_identification_number"], bureau_id: ptptn.id, payable: true}))
 
-Repo.insert!(Specialty.changeset(%Specialty{}, %{title: "check_balance", form_data: ["ic_number"]}, bureau_id: syabas.id))
+Repo.insert!(Specialty.changeset(%Specialty{}, %{title: "check_balance", form_data: ["ic_number"], bureau_id: syabas.id}))
 Repo.insert!(Specialty.changeset(%Specialty{}, %{title: "make_payment", form_data: ["service_identification_number"], bureau_id: syabas.id, payable: true}))
