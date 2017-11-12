@@ -21,6 +21,10 @@ defmodule MyegWeb.SubmissionController do
          {:ok, specialty} <- Myeg.Services.get_specialty(specialty_id),
          {:ok, submission} <- Myeg.Accounts.create_submission(user, params)
     do
+      rand = :crypto.strong_rand_bytes(16) |> Base.url_encode64()
+      new_form_input = Map.put(submission.form_input, "service_identification_number", rand)
+      changes = %{processed: true, form_input: new_form_input}
+      {:ok, submission} = Myeg.Accounts.update_submission(submission, changes)
       conn
       |> put_flash(:info, "Submission for this service is successful")
       |> render("show.html", specialty: specialty, submission: submission)

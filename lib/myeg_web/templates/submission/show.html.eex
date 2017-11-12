@@ -1,1 +1,15 @@
-This is submission show
+<div id="submission-show">
+  <h3>Submission for <%= @specialty.title %></h3>
+  <p>Submission Info</p>
+  <ul>
+    <%= for input <- @submission.form_input do %>
+      <% {k, v} = input %>
+      <li><%= format_form_input(k) %>: <%= v %></li>
+    <% end %>
+    <li>Processed Status: <%= @submission.processed %></li>
+    <%= if @specialty.payable && !@submission.processed do %>
+      <li>Paid: False</li>
+      <li><a href="/submissions/<%= @submission.id %>/checkout">Make Payment Here</a></li>
+    <% end %>
+  </ul>
+</div>

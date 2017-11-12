@@ -1,1 +1,23 @@
 /* This file is for your main application css. */
+#flash-info, #flash-error{
+  height: 30px;
+  width: 70%;
+  margin-left: 20%;
+  border: black 2px solid;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#flash-info{
+  background: green;
+}
+
+#flash-error{
+  background: red;
+}
+
+#flash-info p, #flash-error p {
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}

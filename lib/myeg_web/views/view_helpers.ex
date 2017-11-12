@@ -9,4 +9,11 @@ defmodule MyegWeb.ViewHelpers do
         user
     end
   end
+
+  def format_form_input(input) do
+    Regex.replace(~r/_+/, input, " ")
+    |> String.split()
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(" ")
+  end
 end

@@ -1,13 +1,14 @@
 html {
-  background: gold;
+  background: lightblue;
 }
 
 body{
   height: 100%;
+  background: gold;
 }
 
 main{
-  background: gold;
+  background: lightblue;
 }
 #main{
   grid-area: main;

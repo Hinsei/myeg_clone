@@ -1,4 +1,5 @@
 <div id="register" class="container-fluid">
+  <h3>Register As A New User</h3>
   <%= form_for @changeset, user_path(@conn, :create), fn f ->  %>
       <div class="form-group gen-col">
         <%= label f, "Email" %>

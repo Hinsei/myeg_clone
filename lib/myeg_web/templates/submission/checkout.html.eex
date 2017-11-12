@@ -1,8 +1,11 @@
-<p>Payment Page</p>
-<p>Form for payment here</p>
-<%= form_for @conn, submission_path(@conn, :payment, @submission), [as: :pay], fn f -> %>
-  <%= label f, :account_number %>
-  <%= text_input f, :account_number %>
+<div id="submission-payment">
+  <h3>Payment Form</h3>
+  <%= form_for @conn, submission_path(@conn, :payment, @submission), [as: :pay], fn f -> %>
+    <div class="form-group">
+      <%= label f, :account_number %>
+      <%= text_input f, :account_number, class: "form-control" %>
+    </div>
 
-  <%= submit "Make Payment"%>
-<% end %>
+    <%= submit "Make Payment"%>
+  <% end %>
+</div>

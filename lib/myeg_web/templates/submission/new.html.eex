@@ -1,14 +1,15 @@
-<p>Submission goes here</p>
-<p><%= @specialty.title %></p>
+<div id="submission-new">
+  <h3><%= @specialty.title %></h3>
 
-<%= form_for @changeset, submission_path(@conn, :create, @specialty), fn f -> %>
-  <%= hidden_input f, :payable, value: "#{@specialty.payable}", name: "payable" %>
-  <%= for form_data <- @specialty.form_data do %>
-    <div class="form-group">
-      <%= label f, form_data %>
-      <%= text_input f, String.to_atom(form_data), class: "form-control" %>
-    </div>
+  <%= form_for @changeset, submission_path(@conn, :create, @specialty), fn f -> %>
+    <%= hidden_input f, :payable, value: "#{@specialty.payable}", name: "payable" %>
+    <%= for form_data <- @specialty.form_data do %>
+      <div class="form-group">
+        <%= label f, form_data %>
+        <%= text_input f, String.to_atom(form_data), class: "form-control" %>
+      </div>
+    <% end %>
+
+    <%= submit "Submit Form" %>
   <% end %>
-
-  <%= submit "Submit Form" %>
-<% end %>
+</div>

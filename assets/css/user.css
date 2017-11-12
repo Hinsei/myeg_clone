@@ -1,0 +1,13 @@
+#register {
+  background: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10px;
+  padding: 10px;
+  border: black 2px solid;
+}
+
+#register h3 {
+  text-align: center;
+  text-decoration: underline;
+}

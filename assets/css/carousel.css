@@ -7,11 +7,16 @@
   position: relative;
   padding: 0;
   list-style: none;
+  background: rgb( 0, 0, 0,0.9);
 }
 
 .carousel img {
-  width: 20%;
+  top: 42%;
+  width: 90%;
+  position: relative;
+  border-radius: 10px;
 }
+
 .carousel__controls,
 .carousel__activator {
   display: none;

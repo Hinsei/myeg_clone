@@ -7,7 +7,6 @@
       <% nil -> %>
         <%= render(MyegWeb.SessionView, "login.html", conn: @conn) %>
       <% _ -> %>
-        <p>Logged_In</p>
         <%= link("SignOut", to: "/sessions", method: :delete) %>
     <% end %>
   </div>

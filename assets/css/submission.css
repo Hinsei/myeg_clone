@@ -1,0 +1,35 @@
+#submission-new, #submission-payment, #submission-show {
+  background: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#submission-new button{
+  width: 100%;
+}
+
+#submission-show h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+#submission-show p {
+  text-align: center;
+}
+
+#submission-show ul {
+  text-align: left;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 0;
+}
+
+#submission-show ul li {
+  display: block;
+}
+
+#submission-payment form button {
+  width: 100%;
+}
