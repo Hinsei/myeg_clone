@@ -37,18 +37,18 @@ syabas  = Repo.insert!(%Bureau{},
                          name: "Syabas"
                        })
 
-Repo.insert!(%Services{}, %{title: "summons_checking", form_data: ["name", "ic_number"], bureau_id: jpj.id})
-Repo.insert!(%Services{}, %{title: "summons_payment", form_data: ["summon_identification_number"], bureau_id: jpj.id, payable: true})
-Repo.insert!(%Services{}, %{title: "driving_license_renewal", form_data: ["id_number", "category", "expiry_date", "renewal_period", "mobile_number", "email", "collection_method"], bureau_id: jpj.id, payable: true})
-Repo.insert!(%Services{}, %{title: "road_tax_renewal", form_data: ["id_number", "owner_mobile_number", "owner_category", "owner_name", "vehicle_registration_number", "email", "renewal_period"], bureau_id: jpj.id, payable: true})
-Repo.insert!(%Services{}, %{title: "ldl_application", form_data: ["id_number", "category", "license_class", "duration"], bureau_id: jpj.id})
+Repo.insert!(%Specialty{}, %{title: "summons_checking", form_data: ["name", "ic_number"], bureau_id: jpj.id})
+Repo.insert!(%Specialty{}, %{title: "summons_payment", form_data: ["summon_identification_number"], bureau_id: jpj.id, payable: true})
+Repo.insert!(%Specialty{}, %{title: "driving_license_renewal", form_data: ["id_number", "category", "expiry_date", "renewal_period", "mobile_number", "email", "collection_method"], bureau_id: jpj.id, payable: true})
+Repo.insert!(%Specialty{}, %{title: "road_tax_renewal", form_data: ["id_number", "owner_mobile_number", "owner_category", "owner_name", "vehicle_registration_number", "email", "renewal_period"], bureau_id: jpj.id, payable: true})
+Repo.insert!(%Specialty{}, %{title: "ldl_application", form_data: ["id_number", "category", "license_class", "duration"], bureau_id: jpj.id})
 
-Repo.insert!(%Services{}, %{title: "summons_checking", form_data: ["ic_number"], bureau_id: pdrm.id})
-Repo.insert!(%Services{}, %{title: "summons_payment", form_data: ["summon_identification_number"], bureau_id: pdrm.id, payable: true})
-Repo.insert!(%Services{}, %{title: "accident_document_purchasing_system", form_data: ["ic_number", "vehicle_number"], bureau_id: pdrm.id, payable: true})
+Repo.insert!(%Specialty{}, %{title: "summons_checking", form_data: ["ic_number"], bureau_id: pdrm.id})
+Repo.insert!(%Specialty{}, %{title: "summons_payment", form_data: ["summon_identification_number"], bureau_id: pdrm.id, payable: true})
+Repo.insert!(%Specialty{}, %{title: "accident_document_purchasing_system", form_data: ["ic_number", "vehicle_number"], bureau_id: pdrm.id, payable: true})
 
-Repo.insert!(%Services{}, %{title: "check_balance", form_data: ["id_number", "name", "email", "mobile"], bureau_id: ptptn.id})
-Repo.insert!(%Services{}, %{title: "make_payment", form_data: ["service_identification_number"], bureau_id: ptptn.id, payable: true})
+Repo.insert!(%Specialty{}, %{title: "check_balance", form_data: ["id_number", "name", "email", "mobile"], bureau_id: ptptn.id})
+Repo.insert!(%Specialty{}, %{title: "make_payment", form_data: ["service_identification_number"], bureau_id: ptptn.id, payable: true})
 
-Repo.insert!(%Services{}, %{title: "check_balance", form_data: ["ic_number"]}, bureau_id: syabas.id)
-Repo.insert!(%Services{}, %{title: "make_payment", form_data: ["service_identification_number"], bureau_id: syabas.id, payable: true})
+Repo.insert!(%Specialty{}, %{title: "check_balance", form_data: ["ic_number"]}, bureau_id: syabas.id)
+Repo.insert!(%Specialty{}, %{title: "make_payment", form_data: ["service_identification_number"], bureau_id: syabas.id, payable: true})
