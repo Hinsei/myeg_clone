@@ -14,11 +14,11 @@ defmodule MyegWeb.Admin.SpecialtyController do
     |> Myeg.Services.create_specialty()
     |> case do
       {:ok, specialty} -> 
-
+        {:ok, bureau} = Myeg.Services.get_bureau(specialty.bureau_id)
         conn
         |> put_flash(:info, "Success")
-        |> render(MyegWeb.Admin.BureauView, :show, bureau: Myeg.Services.get_bureau(specialty.bureau_id))
-      {:error, changeset} ->
+        |> render(MyegWeb.Admin.BureauView, :show, bureau: bureau)
+      {:error, _changeset} ->
         conn
         |> put_flash(:error, "Error")
         |> render(MyegWeb.PageView, :index)

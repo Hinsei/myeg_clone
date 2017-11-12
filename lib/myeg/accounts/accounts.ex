@@ -72,6 +72,15 @@ defmodule Myeg.Accounts do
   end
 
   @doc """
+  Update a submission
+  """
+  def update_submission(submission = %Submission{}, attrs) do
+    submission
+    |> Submission.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
   Deletes a user
   """
   def delete_user(user = %User{}) do

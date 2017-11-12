@@ -2,7 +2,7 @@
   <div id="main">
     <%= render(MyegWeb.SharedView,  "carousel.html") %> 
   </div>
-  <div id="auth">
+  <div id="auth" class="containter-fluid">
     <%= case current_user(@conn) do %>
       <% nil -> %>
         <%= render(MyegWeb.SessionView, "login.html", conn: @conn) %>
@@ -16,7 +16,10 @@
     <ul>
       <%= for bureau <- @bureaus do %>
         <li>
-          <%= link bureau.name, to: "/bureaus/#{bureau.id}" %>
+          <a href="/api/bureaus/<%= bureau.id %>/specialties" class="bureau-link">
+            <img src="<%= bureau.logo %>" />
+          </a>
+          <p><%= bureau.name %></p>
         </li>
       <% end %>
     </ul>

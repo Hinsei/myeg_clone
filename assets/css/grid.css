@@ -1,18 +1,28 @@
+html {
+  background: gold;
+}
+
 body{
   height: 100%;
 }
+
+main{
+  background: gold;
+}
 #main{
   grid-area: main;
+  background: white;
   justify-self: center;
   width: 100%;
   height: 100%;
+  border: black 2px solid;
+  border-radius: 10px;
 }
 
 #auth{
   grid-area: auth;
   justify-self: center;
-  background: #0071FF;
-
+  background: white;
   width: 100%;
   height: 100%;
 }
@@ -20,13 +30,12 @@ body{
 #info{
   grid-area: info;
   justify-self: center;
-  background: green;
+  background: white;
   width: 100%;
   height: 100%;
 }
 
 #container{
-  border: #ffad16 5px solid;
   display: grid;
   height: 95vh;
   margin-left: 50px;
@@ -40,7 +49,6 @@ body{
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   align-items: center;
-  background: #ffad16;
   box-sizing: border-box;
 }
 

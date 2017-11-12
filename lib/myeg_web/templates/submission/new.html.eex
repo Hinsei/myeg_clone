@@ -2,6 +2,7 @@
 <p><%= @specialty.title %></p>
 
 <%= form_for @changeset, submission_path(@conn, :create, @specialty), fn f -> %>
+  <%= hidden_input f, :payable, value: "#{@specialty.payable}", name: "payable" %>
   <%= for form_data <- @specialty.form_data do %>
     <div class="form-group">
       <%= label f, form_data %>

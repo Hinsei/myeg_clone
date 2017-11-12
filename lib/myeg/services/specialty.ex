@@ -13,7 +13,7 @@ defmodule Myeg.Services.Specialty do
 
   def changeset(struct, attrs) do
     struct
-    |> cast(attrs, [:title, :form_data, :bureau_id])
+    |> cast(attrs, [:title, :form_data, :bureau_id, :payable])
     |> validate_required([:title, :form_data, :bureau_id])
   end
 end

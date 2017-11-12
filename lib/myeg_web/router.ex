@@ -29,6 +29,8 @@ defmodule MyegWeb.Router do
     get "/specialties/:specialty_id/submissions/new", SubmissionController, :new
     get "/specialties/:specialty_id/submissions/:id", SubmissionController, :show
     post "/specialties/:specialty_id/submissions",    SubmissionController, :create
+    get "/submissions/:submission_id/checkout", SubmissionController, :checkout
+    post "/submissions/:submission_id/payment", SubmissionController, :payment
   end
 
   scope"/admin", MyegWeb.Admin, as: :admin do
@@ -44,6 +46,6 @@ defmodule MyegWeb.Router do
     pipe_through :api
 
     get "/bureaus/:id", BureauController, :show
-
+    get "/bureaus/:id/specialties", BureauController, :specialties 
   end
 end

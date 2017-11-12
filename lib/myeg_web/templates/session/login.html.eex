@@ -8,5 +8,5 @@
   <div>
     <%= submit "Log In" %>
   </div>
+  <%= link("Register", to: user_path(@conn, :new)) %>
 <% end %>
-<%= link("Register", to: user_path(@conn, :new)) %>

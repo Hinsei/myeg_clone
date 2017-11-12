@@ -1,0 +1,9 @@
+.gen-col {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-left: 16%;
+  width: 67%;
+}

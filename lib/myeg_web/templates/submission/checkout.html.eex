@@ -1,0 +1,8 @@
+<p>Payment Page</p>
+<p>Form for payment here</p>
+<%= form_for @conn, submission_path(@conn, :payment, @submission), [as: :pay], fn f -> %>
+  <%= label f, :account_number %>
+  <%= text_input f, :account_number %>
+
+  <%= submit "Make Payment"%>
+<% end %>

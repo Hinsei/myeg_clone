@@ -1,5 +1,4 @@
 defmodule MyegWeb.SubmissionController do
-  require IEx
   use MyegWeb, :controller
 
   def new(conn, %{"specialty_id" => specialty_id}) do
@@ -13,11 +12,11 @@ defmodule MyegWeb.SubmissionController do
       {:error, :not_signed_in} ->
         conn
         |> put_flash(:error, "You must be signed in before making a submission")
-        |> render(MyegWeb.PageView, :index)
+        |> render(MyegWeb.PageView, :index, bureaus: Myeg.Services.list_bureaus())
     end
   end
 
-  def create(conn, params = %{"specialty_id" => specialty_id}) do
+  def create(conn, params = %{"specialty_id" => specialty_id, "payable" => "false"}) do
     with {:ok, user} <- current_user(conn),
          {:ok, specialty} <- Myeg.Services.get_specialty(specialty_id),
          {:ok, submission} <- Myeg.Accounts.create_submission(user, params)
@@ -29,7 +28,24 @@ defmodule MyegWeb.SubmissionController do
       {:error, :not_signed_in} ->
         conn
         |> put_flash(:error, "You must be signed in before making a submission")
-        |> render(MyegWeb.PageView, :index)
+        |> render(MyegWeb.PageView, :index, bureaus: Myeg.Services.list_bureaus())
+    end
+  end
+
+  def create(conn, params = %{"specialty_id" => specialty_id, "payable" => "true"}) do
+    with {:ok, user} <- current_user(conn),
+         {:ok, _specialty} <- Myeg.Services.get_specialty(specialty_id),
+         {:ok, submission} <- Myeg.Accounts.create_submission(user, params)
+    do
+      conn
+      |> put_flash(:info, 
+                   "Submission for this service is sucessful, payment has to be made before it can be processed.")
+      |> render("checkout.html", submission: submission)
+    else
+      {:error, :not_signed_in} ->
+        conn
+        |> put_flash(:error, "You must be signed in before making a submission")
+        |> render(MyegWeb.PageView, :index, bureaus: Myeg.Services.list_bureaus())
     end
   end
 
@@ -43,7 +59,36 @@ defmodule MyegWeb.SubmissionController do
       {:error, :not_signed_in} ->
         conn
         |> put_flash(:error, "You must be signed in before making a submission")
-        |> render(MyegWeb.PageView, :index)
+        |> render(MyegWeb.PageView, :index, bureaus: Myeg.Services.list_bureaus())
+    end
+  end
+
+  def checkout(conn, %{"submission_id" => submission_id}) do
+    with {:ok, _user} <- current_user(conn),
+         {:ok, submission} <- Myeg.Accounts.get_submission(submission_id)
+    do
+      render(conn, "checkout.html", submission: submission)
+    else
+      {:error, :not_signed_in} ->
+        conn
+        |> put_flash(:error, "You must be signed in before making a submission")
+        |> render(MyegWeb.PageView, :index, bureaus: Myeg.Services.list_bureaus())
+    end
+  end
+
+  def payment(conn, %{"submission_id" => submission_id}) do
+    with {:ok, _user} <- current_user(conn),
+         {:ok, submission} <- Myeg.Accounts.get_submission(submission_id),
+         {:ok, _submission} <- Myeg.Accounts.update_submission(submission, %{processed: true})
+    do
+      conn
+      |> put_flash(:info, "Payment successfull")
+      |> render(MyegWeb.PageView, :index, bureaus: Myeg.Services.list_bureaus())
+    else
+      {:error, :not_signed_in} ->
+        conn
+        |> put_flash(:error, "You must be signed in before making a submission")
+        |> render(MyegWeb.PageView, :index, bureaus: Myeg.Services.list_bureaus())
     end
   end
 end

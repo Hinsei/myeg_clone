@@ -1,4 +1,4 @@
-<ul class="carousel my-carousel">
+<ul id="main-carousel" class="carousel my-carousel">
     <input class="carousel__activator" type="radio" id="1" name="activator" checked="checked"/>
     <input class="carousel__activator" type="radio" id="2" name="activator"/>
     <input class="carousel__activator" type="radio" id="3" name="activator"/>
