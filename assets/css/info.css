@@ -3,11 +3,16 @@
   border-radius: 10px;
 }
 
+#info #thumbnail-container {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+}
+
 #info img {
   width: 100px;
   height: 100px;
-  vertical-align: text-top;
-  margin-left: 27%;
   border: black 2px solid;
   border-radius: 50%;
   padding: 10px;
@@ -34,8 +39,11 @@
 #info li {
   text-align: left;
   margin: 10px;
-  float: left;
   width: 20%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #info li a {
