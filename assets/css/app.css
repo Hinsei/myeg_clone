@@ -1,4 +1,7 @@
 /* This file is for your main application css. */
+body, h1, h2, h3, h4, h5, h6, p, a, div, ul{
+  font-family: "Raleway", sans-serif;
+}
 #flash-info, #flash-error{
   height: 30px;
   width: 70%;
