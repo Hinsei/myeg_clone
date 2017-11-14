@@ -45,7 +45,7 @@ main{
   position: fixed;
 }
 
-#container{
+main #container{
   width: 200px;
   height: 95vh;
 }

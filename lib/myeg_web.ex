@@ -24,6 +24,7 @@ defmodule MyegWeb do
       import MyegWeb.Router.Helpers
       import MyegWeb.Gettext
       import MyegWeb.ControllerHelpers
+      action_fallback MyegWeb.FallbackController
     end
   end
 

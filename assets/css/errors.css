@@ -1,0 +1,21 @@
+#errors{
+  top: 0;
+  background: white;
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+  background: rgb(0,0,0, 0.8);
+}
+
+#errors #errors-container {
+  border-radius: 8px;
+  background: white;
+}
+
+#errors-container div {
+  text-align: center;
+  color: red;
+}
+
+
+

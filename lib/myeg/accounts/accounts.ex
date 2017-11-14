@@ -14,8 +14,10 @@ defmodule Myeg.Accounts do
   Return a user by email
   """
   def get_user_by_email(email) do
-    User
-    |> Repo.get_by(email: email)
+    case Repo.get_by(User, email: email) do
+      nil   -> {:error, :unauthorized}
+      user  -> {:ok, user}
+    end
   end
 
   @doc """

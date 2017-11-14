@@ -6,11 +6,6 @@ defmodule MyegWeb.SessionController do
     do   conn
          |> put_session(:current_user, user) 
          |> redirect(to: "/")
-    else
-         {:error, :unauthorized} ->
-         conn
-         |> put_flash(:error, "Wrong Password")
-         |> redirect(to: "/")
     end
   end
 
