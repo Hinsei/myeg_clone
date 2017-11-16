@@ -3,13 +3,15 @@
     <%= render(MyegWeb.SharedView,  "carousel.html") %> 
   </div>
   <div id="main2">
-    <div id="auth" class="containter-fluid">
-      <%= case current_user(@conn) do %>
-        <% nil -> %>
-          <%= render(MyegWeb.SessionView, "login.html", conn: @conn) %>
-        <% _ -> %>
-          <%= link("SignOut", to: "/sessions", method: :delete) %>
-      <% end %>
+    <div id="auth">
+      <div id="auth-container">
+        <%= case current_user(@conn) do %>
+          <% nil -> %>
+            <%= render(MyegWeb.SessionView, "login.html", conn: @conn) %>
+          <% _ -> %>
+            <%= link("SignOut", to: "/sessions", method: :delete) %>
+        <% end %>
+      </div>
     </div>
     <div id="info">
       <h2>Our Services</h2>
