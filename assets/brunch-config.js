@@ -31,13 +31,22 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/assets/static". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: /^(static)/
+    assets: [
+      /^(static)/,
+      /^(node_modules\/font-awesome)/
+    ]
   },
 
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
-    watched: ["static", "css", "js", "vendor"],
+    watched: [
+    "static", 
+    "css", 
+    "js", 
+    "vendor",
+    "scss"
+    ],
     // Where to compile files to
     public: "../priv/static"
   },
@@ -47,6 +56,12 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
+    },
+    sass: {
+      options: {
+        includePaths: ["node_modules/font-awesome/scss"],
+        precision: 8
+      }
     }
   },
 

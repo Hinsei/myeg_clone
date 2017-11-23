@@ -50,3 +50,25 @@
   border-radius: 10px;
   text-decoration: none;
 }
+
+#auth-container nav {
+  margin-bottom: 10px;
+}
+
+#auth-container nav span i {
+  padding: 10px;
+  margin: 10px;
+  border: black 1px solid;
+  width: 100px;
+  height: 100px;
+  display: flex-inline;
+  text-align: center;
+  color: black;
+  box-shadow: inset -2px -2px 1px black;
+}
+
+#auth-container nav span i:hover {
+  box-shadow: none;
+  cursor: pointer;
+}
+
