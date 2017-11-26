@@ -4,7 +4,11 @@ alias Myeg.Services.{Bureau, Specialty}
 alias Myeg.Accounts.{User, Submission}
 
 admin = Repo.insert!(User.create_changeset(%User{}, 
-                     %{email: "admin@admin.com", password: "testing1234", role: :superadmin}))
+                     %{email: "admin@admin.com", password: "testing1234",}))
+
+admin
+|> User.update_changeset(%{role: :superadmin})
+|> Repo.update()
 
 user = Repo.insert!(User.create_changeset(%User{}, %{email: "test@test.com", password: "testing1234"}))
 
